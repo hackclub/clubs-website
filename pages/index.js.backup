@@ -1,0 +1,1628 @@
+import { Badge, Box, Button, Card, Container, Grid, Heading, Link, Text } from 'theme-ui'
+import styled from '@emotion/styled'
+import Head from 'next/head'
+import NextLink from 'next/link'
+import Meta from '@hackclub/meta'
+
+import Icon from '../components/icon'
+import BGImg from '../components/background-image'
+
+import SlideDown from '../components/slide-down'
+import FadeIn from '../components/fade-in'
+import Footer from '../components/footer'
+import Slack from '../components/slack'
+import Stage from '../components/stage'
+
+let Highlight = styled(Text)`
+  color: inherit;
+  border-radius: 1em 0 1em 0;
+  background: linear-gradient(
+    -100deg,
+    rgba(250, 247, 133, 0.33),
+    rgba(250, 247, 133, 0.66) 95%,
+    rgba(250, 247, 133, 0.1)
+  );
+`
+Highlight = Highlight.withComponent('mark')
+
+
+
+const Feature = ({ icon, color, name, desc, children, sx }) => (
+  <Box
+    sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      height: '100%',
+      bg: 'rgba(224, 230, 237, 0.25)',
+      p: [3, 4],
+      borderRadius: 'extra',
+      span: { transform: 'none', width: 'min-intrinsic' },
+      svg: { color: 'white' },
+      ...sx
+    }}
+  >
+    {children || (
+      <>
+        <Box
+          as="span"
+          sx={{
+            width: 'fit-content',
+            bg: color,
+            borderRadius: 18,
+            lineHeight: 0,
+            p: 2,
+            mb: 3,
+            display: 'inline-block',
+            transform: ['scale(0.75)', 'none'],
+            transformOrigin: 'bottom left',
+            boxShadow: 'elevated'
+          }}
+        >
+          <Icon glyph={icon} size={48} />
+        </Box>
+        <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+          <Heading as="h3" variant="headline" mb={2} mt={0}>
+            {name}
+          </Heading>
+          <Text
+            as="p"
+            variant="subtitle"
+            sx={{ 
+              mt: 0, 
+              flex: 1,
+              a: { variant: 'styles.a', color: 'blue' } 
+            }}
+          >
+            {desc}
+          </Text>
+        </Box>
+      </>
+    )}
+  </Box>
+)
+
+const Page = () => (
+  <>
+    <Meta
+      as={Head}
+      title="Coding / Computer Science Clubs"
+      description="Hack Club is a global nonprofit network of high school makers & student-led computer science clubs where young people build the agency, the network, & the technical talent to think big & do big things in the world."
+      image="/assemble.jpg"
+    />
+    <Head>
+      <meta
+        property="og:logo"
+        content="/icon.svg"
+        size="512x512"
+      />
+    </Head>
+
+    <Box
+      as="header"
+      sx={{
+        bg: 'dark',
+        pt: [5, 6],
+        pb: [2, 3],
+        textAlign: 'center',
+        position: 'relative',
+        overflow: 'hidden'
+      }}
+    >
+      <BGImg
+        src="/assemble.jpg"
+        alt="Hack Clubbers assemble at Figma HQ for the first IRL hackathon in SF since 2020: Assemble."
+        priority
+      />
+
+      <SlideDown duration={768}>
+        <Heading
+          as="h1"
+          variant="ultratitle"
+          sx={{
+            color: 'white',
+            textShadow: 'text',
+            filter: 'drop-shadow(0 -2px 4px rgba(0,0,0,0.5))',
+            WebkitFilter: 'drop-shadow(0 -2px 4px rgba(0,0,0,0.5))',
+            maxWidth: [null, 'copyUltra'],
+            my: [3, 4],
+            mx: 'auto',
+            zIndex: 1
+          }}
+        >
+          <Text
+            as="span"
+            sx={{
+              lineHeight: 0.875,
+              display: 'block',
+              pb: 3
+            }}
+          >
+            Don't run your coding&nbsp;club alone.{' '}
+          </Text>
+          Make it a{' '}
+          <Text
+            as="span"
+            sx={{
+              WebkitTextStroke: 'currentColor',
+              WebkitTextStrokeWidth: ['2px', '3px'],
+              WebkitTextFillColor: 'transparent'
+            }}
+          >
+            Hack&nbsp;Club
+          </Text>
+          .
+        </Heading>
+      </SlideDown>
+      <FadeIn duration={1024}>
+        <Text
+          as="p"
+          variant="lead"
+          sx={{
+            color: 'white',
+            textShadow: 'text',
+            maxWidth: 620,
+            mt: 0,
+            mx: 'auto',
+            mb: [3, 4]
+          }}
+        >
+          Hack Club is a nonprofit network of high school computer science&nbsp;clubs and
+          makers around the world. <strong>Applications are now open.</strong>
+        </Text>
+        <Button
+          as="a"
+          variant="ctaLg"
+          href="https://apply.hackclub.com"
+          target="_blank"
+          rel="noopener"
+          sx={{
+            bg: 'blue'
+          }}
+        >
+          Start Your Club
+        </Button>
+        <Button
+          as="a"
+          variant="ctaLg"
+          href="https://hackclub.com/slack/"
+          target="_blank"
+          rel="noopener"
+          sx={{
+            backgroundImage: t => t.util.gx('green', 'blue'),
+            ml: [0, 3],
+            mt: [3, 0]
+          }}
+        >
+          Join the Slack
+        </Button>
+      </FadeIn>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: ['center', 'center', 'flex-end'],
+          marginRight: 2,
+          mt: [2, 2, 1]
+        }}
+      >
+        <Badge
+          as="a"
+          href="https://www.youtube.com/watch?v=PnK4gzO6S3Q"
+          variant="pill"
+          sx={{
+            zIndex: '1',
+            bg: 'rgba(0, 0, 0, 0.7)',
+            color: 'white',
+            opacity: 0.8,
+            textDecoration: 'none',
+            fontWeight: 'normal',
+            ':hover': { opacity: 1 },
+            transition: '0.3s ease'
+          }}
+          title="Photo by Kunal Botla, Hack Clubber in MA!"
+        >
+          Hackers at Assemble in SF
+        </Badge>
+      </Box>
+    </Box>
+    <Box as="section" sx={{ py: [4, 5], color: 'text' }}>
+      <Container>
+        <Text as="p" variant="eyebrow">
+          The rundown
+        </Text>
+        <Heading as="h2" variant="title">
+          Clubs discovering the{' '}
+          <Text
+            as="span"
+            sx={{
+              borderRadius: 'default',
+              px: 2,
+              mx: [-2, 0],
+              whiteSpace: 'nowrap',
+              color: 'background',
+              bg: 'yellow'
+            }}
+          >
+            joy of code
+          </Text>
+          .
+        </Heading>
+        <Text as="p" variant="lead" sx={{ maxWidth: 'copyPlus' }}>
+          Hack Clubs typically meet for 1 hour each week in high schools,
+          makerspaces, community centers, churches, and any other venue where
+          teenagers can gather. As a club leader, you get members (mostly
+          beginners) started on something to learn/create, then members work at
+          their own pace, building websites, apps, & games, and presenting them
+          at the end.
+        </Text>
+        <Grid columns={[null, null, 2, '3fr 2fr']} gap={[3, 4]} pt={[3, 3]}>
+          <iframe
+            width="100%"
+            height="500px"
+            src="https://www.youtube.com/embed/xXIxwV7bQTw?si=gmhvvHTcUxKTVMjt"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+            style={{ borderRadius: 12, border: 'hidden' }}
+          />
+          <Grid
+            columns="auto 1fr"
+            sx={{
+              gridColumnGap: 3,
+              span: {
+                width: 36,
+                height: 36,
+                borderRadius: 24,
+                display: 'inline-block',
+                fontSize: 2,
+                lineHeight: '30px',
+                textAlign: 'center',
+                fontWeight: 'bold',
+                border: '3px solid currentColor'
+              },
+              p: { my: 0 },
+              strong: { display: 'block' }
+            }}
+          >
+            <Text as="span" color="green">
+              1
+            </Text>
+            <Text as="p" variant="subtitle">
+              <strong>
+                A group of teens, many beginners, gather to start coding.
+              </strong>
+              The leader (that's you!) presents for a few minutes, getting the
+              group started building something new.
+            </Text>
+            <Text as="span" color="cyan">
+              2
+            </Text>
+            <Text
+              as="p"
+              variant="subtitle"
+              sx={{ mt: 0, a: { variant: 'styles.a', color: 'blue' } }}
+            >
+              <strong>Everyone gets hacking, individually.</strong> Not hacking
+              bank accounts, but rather being creative and{' '}
+              <Link href="/ship">making something awesome</Link>.
+            </Text>
+            <Text as="span" color="blue">
+              3
+            </Text>
+            <Text as="p" variant="subtitle">
+              <strong>To end, everyone demos their work.</strong>
+              As a leader, you're cultivating a community of makers. Each member
+              showing off their work builds momentum & motivation.
+            </Text>
+          </Grid>
+        </Grid>
+        <Grid
+          columns={[null, '1fr 2fr']}
+          mt={[3, 5]}
+          sx={{ maxWidth: 'copyUltra', mx: 'auto' }}
+        >
+          <Heading as="h3" variant="headline" sx={{ fontSize: [4, 5], mb: 0 }}>
+            Go beyond club meetings.
+          </Heading>
+          <Text
+            as="p"
+            variant="lead"
+            sx={{ mt: 0, a: { variant: 'styles.a', color: 'blue' } }}
+          >
+            Hack Clubs attend and run{' '}
+            <NextLink href="/hackathons">
+              hackathons
+            </NextLink>{' '}
+            like <a href="https://lioncityhacks.com">Lion City Hacks</a> &{' '}
+            <a href="https://www.youtube.com/watch?v=Hs-hMMeHXaY">HackOC</a>,
+            take part in year long programs like{' '}
+            <NextLink href="/onboard">
+              OnBoard
+            </NextLink>, and compete in events
+            like the{' '}
+            <a href="http://www.congressionalappchallenge.us">
+              Congressional App Challenge
+            </a>
+            . The&nbsp;hack's the limit.
+          </Text>
+        </Grid>
+      </Container>
+    </Box>
+    <Box
+      as="section"
+      sx={{
+        py: 6,
+        bg: 'dark',
+        color: 'white',
+        'h2,p': { textShadow: 'text' },
+        textAlign: [null, 'center'],
+        position: 'relative',
+        overflow: 'hidden'
+      }}
+    >
+      <BGImg
+        gradient="linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.625))"
+        src="/slack_ama.webp"
+        alt="Hack Clubbers gather at the Elon Musk AMA in 2020"
+      />
+      <Container>
+        <Text as="p" variant="eyebrow" sx={{ color: 'white', opacity: 0.75 }}>
+          ~ Welcome to the club ~
+        </Text>
+        <Heading as="h2" variant="title">
+          By the students, for the students.
+        </Heading>
+        <Text as="p" variant="lead" sx={{ maxWidth: 'copyPlus', mx: 'auto' }}>
+          Learning to code is like gaining a superpower — turning you from a
+          consumer of technology into a creator. It shouldn't be taught like a
+          class — it should be a creative, inclusive space. To foster this
+          environment,{' '}
+          <Highlight>every&nbsp;Hack&nbsp;Club is student-led</Highlight> &
+          members make self-directed projects.
+        </Text>
+        <Button
+          as={NextLink}
+          href="/philosophy"
+          variant="ctaLg"
+          sx={{
+            bg: 'purple'
+          }}
+        >
+          Our philosophy →
+        </Button>
+      </Container>
+    </Box>
+    <Box as="section" sx={{ py: [4, 5, 6], color: 'text' }}>
+      <Container
+        sx={{
+          maxWidth: [null, 'copyUltra'],
+          svg: { filter: 'drop-shadow(0 2px 3px rgba(0,0,0,.125))' }
+        }}
+      >
+        <Box as="header" sx={{ textAlign: [null, 'center'], pb: [4, 5] }}>
+          <Text as="p" variant="eyebrow">
+            Hit the ground running
+          </Text>
+          <Heading as="h2" variant="title">
+            Get your club{' '}
+            <Text
+              as="span"
+              sx={{
+                borderRadius: 'default',
+                px: 2,
+                mx: [-2, 0],
+                bg: 'cyan',
+                color: 'background',
+                display: 'inline-block',
+                whiteSpace: ['wrap', 'nowrap']
+              }}
+            >
+              going & growing
+            </Text>
+            with Hack&nbsp;Club.
+          </Heading>
+        </Box>
+        <Box>
+          <Grid
+            columns={[1, 2, 3]}
+            gap={[2, 3]}
+            sx={{ 
+              alignItems: 'stretch',
+              span: { color: 'white' },
+              '> *': {
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column'
+              }
+            }}
+          >
+          <Feature
+            icon="slack-fill"
+            color="#5d114c"
+            name="Chat with thousands of club leaders"
+            desc={
+              <>
+                In our <Link href="https://hackclub.com/slack/">Slack community</Link>, you'll be
+                invited to a space for Hack&nbsp;Club leaders to ask questions &
+                chat, share projects, & attend weekly live events.
+              </>
+            }
+          />
+          <Feature
+            icon="bolt"
+            color="green"
+            name="Tools to hack on"
+            desc={
+              <>
+                We build tools, such as{' '}
+                <a href="https://sprig.hackclub.com">Sprig</a>, that your
+                members can use to make projects with in meetings! Build more of
+                them with us in our <Link href="https://hackclub.com/slack/">Slack community</Link>.
+              </>
+            }
+          />
+          <Feature
+            icon="docs"
+            color="red"
+            name="Meeting content"
+            desc={
+              <>
+                Come prepared to every meeting with over 100{' '}
+                <a href="https://workshops.hackclub.com">workshops</a> (3 years'
+                worth!) and 19 <a href="https://jams.hackclub.com">Jams</a> that
+                guide your club members through making fun, creative projects.
+              </>
+            }
+          />
+          <Feature
+            name="Stickers"
+            desc={
+              <>
+                Get <Link href="/stickers">amazing stickers</Link> for marketing
+                your club shipped directly to you & your club members.
+              </>
+            }
+            color="purple"
+            icon="sticker"
+          />
+          <Feature
+            icon="bank-account"
+            color="black"
+            name="A nonprofit fund"
+            desc={
+              <>
+                Use our 501(c)(3) status and a restricted fund with{' '}
+                <Link href="/fiscal-sponsorship">HCB</Link> to fundraise, accept donations, and
+                buy things!
+              </>
+            }
+          />
+          <Feature
+            name="Weekly events"
+            desc={
+              <>
+                From <Link href="/night">Hack Night</Link> to{' '}
+                <Link href="/amas">AMAs</Link>
+                {' to '}
+                <a href="https://twitter.com/hackclub/status/1300494921997193217?s=21">
+                  weirder events
+                </a>
+                , the Slack community has live events for leaders & members
+                alike every week.
+              </>
+            }
+            icon="event-code"
+            color="blue"
+          />
+          </Grid>
+          
+          <Grid
+            columns={[1, 2]}
+            gap={[2, 3]}
+            sx={{ 
+              alignItems: 'stretch',
+              justifyContent: 'center',
+              maxWidth: '800px',
+              mx: 'auto',
+              mt: [2, 3],
+              span: { color: 'white' },
+              '> *': {
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column'
+              }
+            }}
+          >
+          <Feature
+            icon="purse"
+            color="orange"
+            name="A basket of free tools"
+            desc={
+              <>
+                We're always building new tools for leaders, such as{' '}
+                <a href="https://dashboard.hackclub.com">The Dashboard</a>! A place to manage your club! We've also got
+                free subscriptions to Figma Pro, Postman, and more for running a
+                great computer science club.
+              </>
+            }
+          />
+          <Feature
+            icon="sam"
+            color="blue"
+            name="Free Zoom Pro"
+            desc="24/7 access to Zoom Pro enabled meeting rooms for your club (that means no time limit)."
+          /> 
+          </Grid>
+        </Box>
+        <Feature
+          icon="welcome"
+          color="rgb(255,88,88)"
+          name="Existing clubs welcome"
+          desc={
+            <>
+              When established Computer Science clubs join, they get all the Hack&nbsp;Club
+              benefits: Zoom&nbsp;Pro, stickers, our Slack community,{' '}
+              <a href="https://workshops.hackclub.com/">workshops</a>, the
+              works. They're welcome to use the "Hack&nbsp;Club" name or keep
+              their existing one.
+            </>
+          }
+          as="aside"
+          sx={{
+            display: 'grid',
+            gridGap: [0, 4],
+            gridTemplateColumns: [null, 'auto 1fr'],
+            alignItems: 'start',
+            justifyContent: 'start',
+            bg: 'rgba(255,88,88,0.125)',
+            p: [3, 4],
+            mt: [3, 4],
+            borderRadius: 'extra',
+            span: { transform: 'none', width: 'min-intrinsic' },
+            svg: { color: 'white' }
+          }}
+        />
+      </Container>
+    </Box>
+
+    {/* Club Success Stories Section */}
+    <Box as="section" sx={{ py: [4, 5], bg: 'sunken', color: 'text' }}>
+      <Container>
+        <Text as="p" variant="eyebrow">
+          Success stories
+        </Text>
+        <Heading as="h2" variant="title" sx={{ mb: 4 }}>
+          Clubs making an{' '}
+          <Text
+            as="span"
+            sx={{
+              borderRadius: 'default',
+              px: 2,
+              mx: [-2, 0],
+              whiteSpace: 'nowrap',
+              color: 'background',
+              bg: 'green',
+              display: 'inline-block'
+            }}
+          >
+            impact
+          </Text>
+          .
+        </Heading>
+        <Grid columns={[1, 2, 3]} gap={4}>
+          <Card sx={{ p: 4 }}>
+            <Heading as="h3" sx={{ fontSize: 3, mb: 2, color: 'primary' }}>
+              500+ Active Clubs
+            </Heading>
+            <Text>
+              From small rural schools to large urban districts, Hack Clubs are thriving in 
+              communities worldwide, reaching thousands of students every week.
+            </Text>
+          </Card>
+          <Card sx={{ p: 4 }}>
+            <Heading as="h3" sx={{ fontSize: 3, mb: 2, color: 'green' }}>
+              Student-Led Innovation
+            </Heading>
+            <Text>
+              Club members have built everything from mobile apps solving local problems 
+              to hardware projects that help their communities.
+            </Text>
+          </Card>
+          <Card sx={{ p: 4 }}>
+            <Heading as="h3" sx={{ fontSize: 3, mb: 2, color: 'blue' }}>
+              College & Career Ready
+            </Heading>
+            <Text>
+              Hack Club alumni go on to study computer science at top universities and 
+              land internships at leading tech companies.
+            </Text>
+          </Card>
+        </Grid>
+      </Container>
+    </Box>
+
+    {/* What Makes a Great Club Section */}
+    <Box as="section" sx={{ py: [4, 5], bg: 'background', color: 'text' }}>
+      <Container>
+        <Text as="p" variant="eyebrow">
+          Club essentials
+        </Text>
+        <Heading as="h2" variant="title" sx={{ mb: 4 }}>
+          What makes a{' '}
+          <Text
+            as="span"
+            sx={{
+              borderRadius: 'default',
+              px: 2,
+              mx: [-2, 0],
+              whiteSpace: 'nowrap',
+              color: 'background',
+              bg: 'orange',
+              display: 'inline-block'
+            }}
+          >
+            great club
+          </Text>
+          ?
+        </Heading>
+        <Grid columns={[1, 2]} gap={[4, 5]} sx={{ alignItems: 'start' }}>
+          <Box>
+            <Heading as="h3" sx={{ fontSize: 4, mb: 3, color: 'primary' }}>
+              The perfect meeting formula
+            </Heading>
+            <Box sx={{ mb: 4 }}>
+              <Box sx={{ mb: 3 }}>
+                <Text sx={{ fontWeight: 'bold', color: 'green', mb: 1 }}>
+                  Start with a demo (5-10 minutes)
+                </Text>
+                <Text sx={{ color: 'muted' }}>
+                  Show something cool you built or found. Get everyone excited about what's possible.
+                </Text>
+              </Box>
+              
+              <Box sx={{ mb: 3 }}>
+                <Text sx={{ fontWeight: 'bold', color: 'blue', mb: 1 }}>
+                  Hack time (40-45 minutes)
+                </Text>
+                <Text sx={{ color: 'muted' }}>
+                  Everyone works on their own projects. Leaders help debug and answer questions.
+                </Text>
+              </Box>
+              
+              <Box sx={{ mb: 3 }}>
+                <Text sx={{ fontWeight: 'bold', color: 'purple', mb: 1 }}>
+                  Show & tell (5-10 minutes)
+                </Text>
+                <Text sx={{ color: 'muted' }}>
+                  Members share what they worked on. Celebrate progress, no matter how small.
+                </Text>
+              </Box>
+            </Box>
+          </Box>
+          
+          <Box>
+            <Heading as="h3" sx={{ fontSize: 4, mb: 3, color: 'primary' }}>
+              Creating the right environment
+            </Heading>
+            <Box as="ul" sx={{ listStyle: 'none', p: 0 }}>
+              <Box as="li" sx={{ mb: 3, display: 'flex', alignItems: 'flex-start' }}>
+                <Text sx={{ color: 'green', mr: 2, fontSize: 2, fontWeight: 'bold' }}>✓</Text>
+                <Text>
+                  <Text as="span" sx={{ fontWeight: 'bold' }}>Inclusive & welcoming:</Text> Everyone belongs, regardless of experience level
+                </Text>
+              </Box>
+              <Box as="li" sx={{ mb: 3, display: 'flex', alignItems: 'flex-start' }}>
+                <Text sx={{ color: 'green', mr: 2, fontSize: 2, fontWeight: 'bold' }}>✓</Text>
+                <Text>
+                  <Text as="span" sx={{ fontWeight: 'bold' }}>Project-focused:</Text> Learning happens through building real things
+                </Text>
+              </Box>
+              <Box as="li" sx={{ mb: 3, display: 'flex', alignItems: 'flex-start' }}>
+                <Text sx={{ color: 'green', mr: 2, fontSize: 2, fontWeight: 'bold' }}>✓</Text>
+                <Text>
+                  <Text as="span" sx={{ fontWeight: 'bold' }}>Student-driven:</Text> Members choose what they want to learn and build
+                </Text>
+              </Box>
+              <Box as="li" sx={{ mb: 3, display: 'flex', alignItems: 'flex-start' }}>
+                <Text sx={{ color: 'green', mr: 2, fontSize: 2, fontWeight: 'bold' }}>✓</Text>
+                <Text>
+                  <Text as="span" sx={{ fontWeight: 'bold' }}>Collaborative:</Text> Help each other, share knowledge, celebrate wins
+                </Text>
+              </Box>
+            </Box>
+          </Box>
+        </Grid>
+      </Container>
+    </Box>
+
+    {/* Club Activities Section */}
+    <Box as="section" sx={{ py: [4, 5], bg: 'background', color: 'text' }}>
+      <Container>
+        <Text as="p" variant="eyebrow">
+          Beyond meetings
+        </Text>
+        <Heading as="h2" variant="title" sx={{ mb: 4 }}>
+          Activities that{' '}
+          <Text
+            as="span"
+            sx={{
+              borderRadius: 'default',
+              px: 2,
+              mx: [-2, 0],
+              whiteSpace: 'nowrap',
+              color: 'background',
+              bg: 'red',
+              display: 'inline-block'
+            }}
+          >
+            energize
+          </Text>
+          {' '}your club.
+        </Heading>
+        <Grid columns={[1, 2, 4]} gap={3}>
+          <Card sx={{ p: 3, textAlign: 'center' }}>
+            <Heading as="h4" sx={{ fontSize: 2, mb: 2, color: 'orange' }}>Hackathons</Heading>
+            <Text sx={{ fontSize: 1 }}>
+              Organize weekend coding competitions or attend regional hackathons as a group
+            </Text>
+          </Card>
+          <Card sx={{ p: 3, textAlign: 'center' }}>
+            <Heading as="h4" sx={{ fontSize: 2, mb: 2, color: 'purple' }}>Game Jams</Heading>
+            <Text sx={{ fontSize: 1 }}>
+              Build games together in short sprints using tools like Scratch or JavaScript
+            </Text>
+          </Card>
+          <Card sx={{ p: 3, textAlign: 'center' }}>
+            <Heading as="h4" sx={{ fontSize: 2, mb: 2, color: 'blue' }}>Tech Talks</Heading>
+            <Text sx={{ fontSize: 1 }}>
+              Invite local developers or have members present on topics they're passionate about
+            </Text>
+          </Card>
+          <Card sx={{ p: 3, textAlign: 'center' }}>
+            <Heading as="h4" sx={{ fontSize: 2, mb: 2, color: 'green' }}>Demo Days</Heading>
+            <Text sx={{ fontSize: 1 }}>
+              Showcase member projects to parents, teachers, and the broader school community
+            </Text>
+          </Card>
+        </Grid>
+      </Container>
+    </Box>
+
+
+    <Slack />
+          <Grid columns={[1, null, '1fr 2fr']} gap={[3, 4]} sx={{ alignItems: 'center' }}>
+            <Box>
+              <Box
+                sx={{
+                  width: 80,
+                  height: 80,
+                  borderRadius: 'extra',
+                  bg: 'red',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: 4,
+                  fontWeight: 'bold',
+                  mb: 3,
+                  mx: ['auto', null, 0],
+                  boxShadow: 'elevated'
+                }}
+              >
+                1
+              </Box>
+              <Heading as="h3" sx={{ fontSize: [3, 4], mb: 2, textAlign: ['center', null, 'left'] }}>
+                Planning & Preparation
+              </Heading>
+            </Box>
+            <Box>
+              <Text sx={{ mb: 3, opacity: 0.9 }}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, 
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </Text>
+              <Box as="ul" sx={{ listStyle: 'none', p: 0 }}>
+                <Box as="li" sx={{ mb: 2, display: 'flex', alignItems: 'flex-start' }}>
+                  <Box
+                    as="span"
+                    sx={{
+                      width: 24,
+                      height: 24,
+                      borderRadius: 'circle',
+                      bg: 'cyan',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      mr: 2,
+                      mt: '2px',
+                      flexShrink: 0
+                    }}
+                  >
+                    <Icon glyph="docs" size={12} />
+                  </Box>
+                  <Text sx={{ fontSize: 1 }}>
+                    Lorem ipsum dolor sit amet consectetur adipiscing elit
+                  </Text>
+                </Box>
+                <Box as="li" sx={{ mb: 2, display: 'flex', alignItems: 'flex-start' }}>
+                  <Box
+                    as="span"
+                    sx={{
+                      width: 24,
+                      height: 24,
+                      borderRadius: 'circle',
+                      bg: 'cyan',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      mr: 2,
+                      mt: '2px',
+                      flexShrink: 0
+                    }}
+                  >
+                    <Icon glyph="calendar" size={12} />
+                  </Box>
+                  <Text sx={{ fontSize: 1 }}>
+                    Sed do eiusmod tempor incididunt ut labore et dolore
+                  </Text>
+                </Box>
+                <Box as="li" sx={{ mb: 2, display: 'flex', alignItems: 'flex-start' }}>
+                  <Box
+                    as="span"
+                    sx={{
+                      width: 24,
+                      height: 24,
+                      borderRadius: 'circle',
+                      bg: 'cyan',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      mr: 2,
+                      mt: '2px',
+                      flexShrink: 0
+                    }}
+                  >
+                    <Icon glyph="person" size={12} />
+                  </Box>
+                  <Text sx={{ fontSize: 1 }}>
+                    Magna aliqua ut enim ad minim veniam quis nostrud
+                  </Text>
+                </Box>
+              </Box>
+            </Box>
+          </Grid>
+        </Box>
+
+        {/* Curved Connector 1-2 */}
+        <Box sx={{ 
+          position: 'absolute',
+          top: '100%',
+          left: 0,
+          right: 0,
+          height: [120, 150],
+          zIndex: 1,
+          pointerEvents: 'none'
+        }}>
+          <svg
+            width="100%"
+            height="100%"
+            viewBox="0 0 1200 150"
+            style={{ position: 'absolute', top: 0, left: 0 }}
+          >
+            <path
+              d="M 120 20 Q 600 120 1080 20"
+              stroke="#00d4ff"
+              strokeWidth="3"
+              strokeDasharray="12,8"
+              fill="none"
+              opacity="0.8"
+            />
+          </svg>
+        </Box>
+
+        {/* Step 2: Getting Started */}
+        <Box sx={stepContainerStyles}>
+          <Grid columns={[1, null, '2fr 1fr']} gap={[3, 4]} sx={{ alignItems: 'center' }}>
+            <Box>
+              <Text sx={{ mb: 3, opacity: 0.9 }}>
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+              </Text>
+              <Box as="ul" sx={{ listStyle: 'none', p: 0 }}>
+                <Box as="li" sx={{ mb: 2, display: 'flex', alignItems: 'flex-start' }}>
+                  <Box
+                    as="span"
+                    sx={{
+                      width: 24,
+                      height: 24,
+                      borderRadius: 'circle',
+                      bg: 'green',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      mr: 2,
+                      mt: '2px',
+                      flexShrink: 0
+                    }}
+                  >
+                    <Icon glyph="send" size={12} />
+                  </Box>
+                  <Text sx={{ fontSize: 1 }}>
+                    Sunt in culpa qui officia deserunt mollit anim
+                  </Text>
+                </Box>
+                <Box as="li" sx={{ mb: 2, display: 'flex', alignItems: 'flex-start' }}>
+                  <Box
+                    as="span"
+                    sx={{
+                      width: 24,
+                      height: 24,
+                      borderRadius: 'circle',
+                      bg: 'green',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      mr: 2,
+                      mt: '2px',
+                      flexShrink: 0
+                    }}
+                  >
+                    <Icon glyph="welcome" size={12} />
+                  </Box>
+                  <Text sx={{ fontSize: 1 }}>
+                    Id est laborum sed ut perspiciatis unde omnis
+                  </Text>
+                </Box>
+                <Box as="li" sx={{ mb: 2, display: 'flex', alignItems: 'flex-start' }}>
+                  <Box
+                    as="span"
+                    sx={{
+                      width: 24,
+                      height: 24,
+                      borderRadius: 'circle',
+                      bg: 'green',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      mr: 2,
+                      mt: '2px',
+                      flexShrink: 0
+                    }}
+                  >
+                    <Icon glyph="slack-fill" size={12} />
+                  </Box>
+                  <Text sx={{ fontSize: 1 }}>
+                    Iste natus error sit voluptatem accusantium doloremque
+                  </Text>
+                </Box>
+              </Box>
+            </Box>
+            <Box sx={{ textAlign: ['center', null, 'right'] }}>
+              <Box
+                sx={{
+                  width: 80,
+                  height: 80,
+                  borderRadius: 'extra',
+                  bg: 'green',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: 4,
+                  fontWeight: 'bold',
+                  mb: 3,
+                  mx: ['auto', null, 0],
+                  boxShadow: 'elevated'
+                }}
+              >
+                2
+              </Box>
+              <Heading as="h3" sx={{ fontSize: [3, 4], mb: 2 }}>
+                Getting Started
+              </Heading>
+            </Box>
+          </Grid>
+        </Box>
+
+        {/* Curved Connector 2-3 */}
+        <Box sx={{ 
+          position: 'absolute',
+          top: '100%',
+          left: 0,
+          right: 0,
+          height: [120, 150],
+          zIndex: 1,
+          pointerEvents: 'none'
+        }}>
+          <svg
+            width="100%"
+            height="100%"
+            viewBox="0 0 1200 150"
+            style={{ position: 'absolute', top: 0, left: 0 }}
+          >
+            <path
+              d="M 1080 20 Q 600 120 120 20"
+              stroke="#33d9b2"
+              strokeWidth="3"
+              strokeDasharray="12,8"
+              fill="none"
+              opacity="0.8"
+            />
+          </svg>
+        </Box>
+
+        {/* Step 3: First Meeting */}
+        <Box sx={stepContainerStyles}>
+          <Grid columns={[1, null, '1fr 2fr']} gap={[3, 4]} sx={{ alignItems: 'center' }}>
+            <Box>
+              <Box
+                sx={{
+                  width: 80,
+                  height: 80,
+                  borderRadius: 'extra',
+                  bg: 'blue',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: 4,
+                  fontWeight: 'bold',
+                  mb: 3,
+                  mx: ['auto', null, 0],
+                  boxShadow: 'elevated'
+                }}
+              >
+                3
+              </Box>
+              <Heading as="h3" sx={{ fontSize: [3, 4], mb: 2, textAlign: ['center', null, 'left'] }}>
+                Your First Meeting
+              </Heading>
+            </Box>
+            <Box>
+              <Text sx={{ mb: 3, opacity: 0.9 }}>
+                Laudantium totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi 
+                architecto beatae vitae dicta sunt explicabo.
+              </Text>
+              <Grid columns={[1, 2]} gap={3}>
+                <Card sx={{ p: 3, bg: 'rgba(255,255,255,0.1)', borderRadius: 'extra' }}>
+                  <Box
+                    sx={{
+                      width: 32,
+                      height: 32,
+                      borderRadius: 'circle',
+                      bg: 'cyan',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      mb: 2
+                    }}
+                  >
+                    <Icon glyph="bolt" size={16} />
+                  </Box>
+                  <Heading as="h4" sx={{ fontSize: 2, mb: 2, color: 'cyan' }}>
+                    Lorem Ipsum
+                  </Heading>
+                  <Text sx={{ fontSize: 1, opacity: 0.8 }}>
+                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
+                  </Text>
+                </Card>
+                <Card sx={{ p: 3, bg: 'rgba(255,255,255,0.1)', borderRadius: 'extra' }}>
+                  <Box
+                    sx={{
+                      width: 32,
+                      height: 32,
+                      borderRadius: 'circle',
+                      bg: 'green',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      mb: 2
+                    }}
+                  >
+                    <Icon glyph="event-code" size={16} />
+                  </Box>
+                  <Heading as="h4" sx={{ fontSize: 2, mb: 2, color: 'green' }}>
+                    Dolor Sit
+                  </Heading>
+                  <Text sx={{ fontSize: 1, opacity: 0.8 }}>
+                    Sed quia consequuntur magni dolores eos qui ratione voluptatem sequi.
+                  </Text>
+                </Card>
+              </Grid>
+            </Box>
+          </Grid>
+        </Box>
+
+        {/* Curved Connector 3-4 */}
+        <Box sx={{ 
+          position: 'absolute',
+          top: '100%',
+          left: 0,
+          right: 0,
+          height: [120, 150],
+          zIndex: 1,
+          pointerEvents: 'none'
+        }}>
+          <svg
+            width="100%"
+            height="100%"
+            viewBox="0 0 1200 150"
+            style={{ position: 'absolute', top: 0, left: 0 }}
+          >
+            <path
+              d="M 120 20 Q 600 120 1080 20"
+              stroke="#3742fa"
+              strokeWidth="3"
+              strokeDasharray="12,8"
+              fill="none"
+              opacity="0.8"
+            />
+          </svg>
+        </Box>
+
+        {/* Step 4: Building Momentum */}
+        <Box sx={stepContainerStyles}>
+          <Grid columns={[1, null, '2fr 1fr']} gap={[3, 4]} sx={{ alignItems: 'center' }}>
+            <Box>
+              <Text sx={{ mb: 3, opacity: 0.9 }}>
+                Neque porro quisquam est qui dolorem ipsum quia dolor sit amet consectetur 
+                adipisci velit sed quia non numquam eius modi tempora incidunt.
+              </Text>
+              <Box sx={{ 
+                bg: 'rgba(255,255,255,0.1)', 
+                p: 3, 
+                borderRadius: 'extra',
+                borderLeft: '4px solid',
+                borderColor: 'orange'
+              }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                  <Box
+                    sx={{
+                      width: 24,
+                      height: 24,
+                      borderRadius: 'circle',
+                      bg: 'orange',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      mr: 2
+                    }}
+                  >
+                    <Icon glyph="idea" size={12} />
+                  </Box>
+                  <Text sx={{ fontWeight: 'bold', color: 'orange' }}>
+                    Pro Tip
+                  </Text>
+                </Box>
+                <Text sx={{ fontSize: 1, opacity: 0.9 }}>
+                  Ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+                  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </Text>
+              </Box>
+            </Box>
+            <Box sx={{ textAlign: ['center', null, 'right'] }}>
+              <Box
+                sx={{
+                  width: 80,
+                  height: 80,
+                  borderRadius: 'extra',
+                  bg: 'purple',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: 4,
+                  fontWeight: 'bold',
+                  mb: 3,
+                  mx: ['auto', null, 0],
+                  boxShadow: 'elevated'
+                }}
+              >
+                4
+              </Box>
+              <Heading as="h3" sx={{ fontSize: [3, 4], mb: 2 }}>
+                Building Momentum
+              </Heading>
+            </Box>
+          </Grid>
+        </Box>
+
+        {/* Curved Connector 4-5 */}
+        <Box sx={{ 
+          position: 'absolute',
+          top: '100%',
+          left: 0,
+          right: 0,
+          height: [120, 150],
+          zIndex: 1,
+          pointerEvents: 'none'
+        }}>
+          <svg
+            width="100%"
+            height="100%"
+            viewBox="0 0 1200 150"
+            style={{ position: 'absolute', top: 0, left: 0 }}
+          >
+            <path
+              d="M 1080 20 Q 600 120 120 20"
+              stroke="#a55eea"
+              strokeWidth="3"
+              strokeDasharray="12,8"
+              fill="none"
+              opacity="0.8"
+            />
+          </svg>
+        </Box>
+
+        {/* Step 5: Growing Your Community */}
+        <Box sx={stepContainerStyles}>
+          <Grid columns={[1, null, '1fr 2fr']} gap={[3, 4]} sx={{ alignItems: 'center' }}>
+            <Box>
+              <Box
+                sx={{
+                  width: 80,
+                  height: 80,
+                  borderRadius: 'extra',
+                  bg: 'orange',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: 4,
+                  fontWeight: 'bold',
+                  mb: 3,
+                  mx: ['auto', null, 0],
+                  boxShadow: 'elevated'
+                }}
+              >
+                5
+              </Box>
+              <Heading as="h3" sx={{ fontSize: [3, 4], mb: 2, textAlign: ['center', null, 'left'] }}>
+                Growing Your Community
+              </Heading>
+            </Box>
+            <Box>
+              <Text sx={{ mb: 4, opacity: 0.9 }}>
+                Ut enim ad minima veniam quis nostrum exercitationem ullam corporis suscipit 
+                laboriosam nisi ut aliquid ex ea commodi consequatur.
+              </Text>
+              <Grid columns={[1, 2, 3]} gap={3}>
+                <Box sx={{ textAlign: 'center' }}>
+                  <Box sx={{ 
+                    width: 60, 
+                    height: 60, 
+                    borderRadius: 'extra', 
+                    bg: 'rgba(255,255,255,0.2)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    mx: 'auto',
+                    mb: 2,
+                    boxShadow: 'card'
+                  }}>
+                    <Icon glyph="bolt" size={24} />
+                  </Box>
+                  <Text sx={{ fontSize: 1, fontWeight: 'bold', mb: 1 }}>Lorem</Text>
+                  <Text sx={{ fontSize: 0, opacity: 0.8 }}>Ipsum dolor sit</Text>
+                </Box>
+                <Box sx={{ textAlign: 'center' }}>
+                  <Box sx={{ 
+                    width: 60, 
+                    height: 60, 
+                    borderRadius: 'extra', 
+                    bg: 'rgba(255,255,255,0.2)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    mx: 'auto',
+                    mb: 2,
+                    boxShadow: 'card'
+                  }}>
+                    <Icon glyph="event-check" size={24} />
+                  </Box>
+                  <Text sx={{ fontSize: 1, fontWeight: 'bold', mb: 1 }}>Amet</Text>
+                  <Text sx={{ fontSize: 0, opacity: 0.8 }}>Consectetur elit</Text>
+                </Box>
+                <Box sx={{ textAlign: 'center' }}>
+                  <Box sx={{ 
+                    width: 60, 
+                    height: 60, 
+                    borderRadius: 'extra', 
+                    bg: 'rgba(255,255,255,0.2)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    mx: 'auto',
+                    mb: 2,
+                    boxShadow: 'card'
+                  }}>
+                    <Icon glyph="sam" size={24} />
+                  </Box>
+                  <Text sx={{ fontSize: 1, fontWeight: 'bold', mb: 1 }}>Dolor</Text>
+                  <Text sx={{ fontSize: 0, opacity: 0.8 }}>Sed eiusmod</Text>
+                </Box>
+              </Grid>
+            </Box>
+          </Grid>
+        </Box>
+
+        {/* Curved Connector 5-6 */}
+        <Box sx={{ 
+          position: 'absolute',
+          top: '100%',
+          left: 0,
+          right: 0,
+          height: [120, 150],
+          zIndex: 1,
+          pointerEvents: 'none'
+        }}>
+          <svg
+            width="100%"
+            height="100%"
+            viewBox="0 0 1200 150"
+            style={{ position: 'absolute', top: 0, left: 0 }}
+          >
+            <path
+              d="M 120 20 Q 600 120 1080 20"
+              stroke="#ff9f43"
+              strokeWidth="3"
+              strokeDasharray="12,8"
+              fill="none"
+              opacity="0.8"
+            />
+          </svg>
+        </Box>
+
+        {/* Step 6: Long-term Success */}
+        <Box sx={{ ...stepContainerStyles, mb: 0 }}>
+          <Grid columns={[1, null, '2fr 1fr']} gap={[3, 4]} sx={{ alignItems: 'center' }}>
+            <Box>
+              <Text sx={{ mb: 3, opacity: 0.9 }}>
+                Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil 
+                molestiae consequatur vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.
+              </Text>
+              <Box as="ul" sx={{ listStyle: 'none', p: 0, columns: [1, 2], columnGap: 4 }}>
+                <Box as="li" sx={{ mb: 2, display: 'flex', alignItems: 'flex-start', breakInside: 'avoid' }}>
+                  <Box
+                    as="span"
+                    sx={{
+                      width: 24,
+                      height: 24,
+                      borderRadius: 'circle',
+                      bg: 'yellow',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      mr: 2,
+                      mt: '2px',
+                      flexShrink: 0
+                    }}
+                  >
+                    <Icon glyph="star-fill" size={12} />
+                  </Box>
+                  <Text sx={{ fontSize: 1 }}>
+                    At vero eos et accusamus et iusto odio
+                  </Text>
+                </Box>
+                <Box as="li" sx={{ mb: 2, display: 'flex', alignItems: 'flex-start', breakInside: 'avoid' }}>
+                  <Box
+                    as="span"
+                    sx={{
+                      width: 24,
+                      height: 24,
+                      borderRadius: 'circle',
+                      bg: 'yellow',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      mr: 2,
+                      mt: '2px',
+                      flexShrink: 0
+                    }}
+                  >
+                    <Icon glyph="star-fill" size={12} />
+                  </Box>
+                  <Text sx={{ fontSize: 1 }}>
+                    Dignissimos ducimus qui blanditiis praesentium
+                  </Text>
+                </Box>
+                <Box as="li" sx={{ mb: 2, display: 'flex', alignItems: 'flex-start', breakInside: 'avoid' }}>
+                  <Box
+                    as="span"
+                    sx={{
+                      width: 24,
+                      height: 24,
+                      borderRadius: 'circle',
+                      bg: 'yellow',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      mr: 2,
+                      mt: '2px',
+                      flexShrink: 0
+                    }}
+                  >
+                    <Icon glyph="star-fill" size={12} />
+                  </Box>
+                  <Text sx={{ fontSize: 1 }}>
+                    Voluptatum deleniti atque corrupti quos
+                  </Text>
+                </Box>
+                <Box as="li" sx={{ mb: 2, display: 'flex', alignItems: 'flex-start', breakInside: 'avoid' }}>
+                  <Box
+                    as="span"
+                    sx={{
+                      width: 24,
+                      height: 24,
+                      borderRadius: 'circle',
+                      bg: 'yellow',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      mr: 2,
+                      mt: '2px',
+                      flexShrink: 0
+                    }}
+                  >
+                    <Icon glyph="star-fill" size={12} />
+                  </Box>
+                  <Text sx={{ fontSize: 1 }}>
+                    Dolores et quas molestias excepturi sint
+                  </Text>
+                </Box>
+              </Box>
+            </Box>
+            <Box sx={{ textAlign: ['center', null, 'right'] }}>
+              <Box
+                sx={{
+                  width: 80,
+                  height: 80,
+                  borderRadius: 'extra',
+                  bg: 'yellow',
+                  color: 'dark',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: 4,
+                  fontWeight: 'bold',
+                  mb: 3,
+                  mx: ['auto', null, 0],
+                  boxShadow: 'elevated'
+                }}
+              >
+                6
+              </Box>
+              <Heading as="h3" sx={{ fontSize: [3, 4], mb: 2 }}>
+                Long-term Success
+              </Heading>
+            </Box>
+          </Grid>
+        </Box>
+
+
+      </Container>
+    </Box>
+
+    <Slack />
+    <Box bg="sunken" color="text" py={[5, 6]}>
+      <Container sx={{ textAlign: ['left', 'center'] }}>
+        <Text as="p" variant="eyebrow">
+          Next steps
+        </Text>
+        <Heading as="h2" variant="title">
+          Apply today to{' '}
+          <Text
+            as="span"
+            sx={{
+              borderRadius: 'default',
+              px: 2,
+              ml: [-2, 0],
+              whiteSpace: ['wrap', 'nowrap'],
+              color: 'white',
+              bg: 'purple'
+            }}
+          >
+            start your club
+          </Text>
+          .
+        </Heading>
+        <Text as="p" variant="lead" mt={3} color="slate">
+          It's all-online, free, & takes under an hour. We'll help from there!
+        </Text>
+        <Grid
+          pt={[3, 4]}
+          pb={[4, 5]}
+          gap={[4, 3, 4]}
+          columns={[null, 3]}
+          sx={{
+            textAlign: 'left',
+            '> a, > div': {
+              borderRadius: 'extra',
+              boxShadow: 'elevated',
+              px: [3, null, 4],
+              py: [4, null, 5]
+            },
+            span: {
+              boxShadow: 'card'
+            },
+            svg: { fill: 'currentColor' }
+          }}
+        >
+          <Card
+            as="a"
+            href="https://apply.hackclub.com/"
+            variant="interactive"
+            sx={{
+              bg: 'blue',
+              color: 'white',
+              svg: { color: 'cyan' }
+            }}
+          >
+            <Stage
+              icon="send"
+              color="white"
+              name="1. Application"
+              desc="Start by telling us about your club & who's leading it."
+            />
+          </Card>
+          <Card
+            sx={{
+              bg: 'orange',
+              color: 'white',
+              svg: { color: 'red' }
+            }}
+          >
+            <Stage
+              icon="emoji"
+              color="white"
+              name="2. Onboarding call"
+              desc="Hop on a quick Zoom with someone from Hack Club HQ."
+            />
+          </Card>
+          <Card
+            sx={{
+              bg: 'purple',
+              color: 'white',
+              svg: { color: 'pink' }
+            }}
+          >
+            <Stage
+              icon="event-check"
+              color="white"
+              name="3. First meeting"
+              desc="Schedule your club's first meeting & get going!"
+            />
+          </Card>
+        </Grid>
+        <Button
+          as="a"
+          href="https://apply.hackclub.com"
+          target="_blank"
+          rel="noopener"
+          variant="ctaLg"
+          sx={{
+            bg: 'blue'
+          }}
+        >
+          Start Your Club
+        </Button>
+      </Container>
+    </Box>
+    <Footer
+      dark
+      sx={{
+        backgroundColor: 'dark',
+        position: 'relative',
+        overflow: 'hidden',
+        textShadow: '0 1px 2px rgba(0,0,0,0.375)',
+        'h2,span,p,a': { color: 'white !important' },
+        '> div img': { objectPosition: ['left', 'center'] },
+        svg: {
+          fill: 'white',
+          filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.25))'
+        }
+      }}
+    >
+      <style>
+        {`a{
+          color: #338eda
+        }`}
+      </style>
+    </Footer>
+  </>
+)
+
+export default Page
