@@ -567,7 +567,7 @@ const Page: React.FC = () => (
           <Heading
             as="h2"
             sx={{
-              fontSize: [5, 6, 7],
+              fontSize: [3, 4, 5],
               fontWeight: 900,
               lineHeight: 1.3,
               letterSpacing: '-0.03em',
