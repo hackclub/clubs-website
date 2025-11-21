@@ -567,14 +567,16 @@ const Page: React.FC = () => (
           <Heading
             as="h2"
             sx={{
-              fontSize: [6, 7, 8],
+              fontSize: [5, 6, 7],
               fontWeight: 900,
-              lineHeight: 1.05,
+              lineHeight: 1.3,
               letterSpacing: '-0.03em',
               color: 'text',
               mb: 4,
+              pb: 2,
               maxWidth: '900px',
-              mx: 'auto'
+              mx: 'auto',
+              overflow: 'visible'
             }}
           >
             Clubs discovering the{' '}

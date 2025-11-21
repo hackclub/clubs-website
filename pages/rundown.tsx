@@ -18,6 +18,7 @@ const RundownPage: React.FC = () => (
           The rundown
         </Text>
         <Heading as="h2" variant="title" sx={{
+          fontSize: [5, 6],
           background: 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)',
           backgroundClip: 'text',
           WebkitBackgroundClip: 'text',
