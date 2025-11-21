@@ -116,10 +116,12 @@ const ClubsPortal = () => {
             </Text>
             <Box sx={{ display: 'flex', justifyContent: 'center', mt: [5, 6] }}>
               <Button
-                as="a"
-                href="https://leaders.hackclub.com/"
-                target="_blank"
-                rel="noopener"
+                {...({
+                  as: "a",
+                  href: "https://leaders.hackclub.com/",
+                  target: "_blank",
+                  rel: "noopener"
+                } as any)}
                 sx={{
                   bg: '#ec3750',
                   color: 'white',

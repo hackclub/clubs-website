@@ -8,7 +8,7 @@ interface IconComponentProps {
   [key: string]: any
 }
 
-const IconComponent: React.FC<IconComponentProps> = (props) => <Icon {...props} />
+const IconComponent: React.FC<IconComponentProps> = (props) => <Icon {...props as any} />
 
 export default IconComponent
 

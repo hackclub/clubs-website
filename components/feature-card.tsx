@@ -79,7 +79,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
       p: variant === 'activity' ? 4 : 3,
       textAlign: variant === 'activity' ? 'center' : 'left',
       display: 'flex',
-      flexDirection: 'column',
+      flexDirection: 'column' as const,
       height: '100%',
       ...(href && {
         cursor: 'pointer',
@@ -89,13 +89,13 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
           boxShadow: '0 8px 25px rgba(0, 0, 0, 0.1)'
         }
       })
-    },
+    } as any,
     ...props
   }
 
   if (href) {
     return (
-      <Card as="a" href={href} {...cardProps}>
+      <Card {...({ as: "a", href } as any)} {...cardProps}>
         {cardContent}
       </Card>
     )

@@ -1,7 +1,7 @@
 import base from '@hackclub/theme'
 import { merge } from 'lodash'
 
-const theme = base
+const theme = base as any
 
 theme.useColorSchemeMediaQuery = false
 

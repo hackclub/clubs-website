@@ -123,10 +123,12 @@ const Navigation: React.FC = () => {
                 FAQ
             </Button>
             <Button
-                as="a"
-                href="https://apply.hackclub.com/"
-                target="_blank"
-                rel="noopener noreferrer"
+                {...({
+                    as: "a",
+                    href: "https://apply.hackclub.com/",
+                    target: "_blank",
+                    rel: "noopener noreferrer"
+                } as any)}
                 sx={{
                     fontSize: 1,
                     bg: 'red',

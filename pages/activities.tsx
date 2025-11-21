@@ -21,10 +21,12 @@ const ActivitiesPage: React.FC = () => (
       <Grid columns={[1, null, 2]} gap={[4, 5]} sx={{ mt: 4 }}>
         {/* hackathons card */}
         <Card 
-          as="a"
-          href="https://hackathons.hackclub.com"
-          target="_blank"
-          rel="noopener"
+          {...({
+            as: "a",
+            href: "https://hackathons.hackclub.com",
+            target: "_blank",
+            rel: "noopener"
+          } as any)}
           sx={{ 
             p: 4, 
             textAlign: 'center',
@@ -59,10 +61,12 @@ const ActivitiesPage: React.FC = () => (
 
         {/* bank card */}
         <Card 
-          as="a"
-          href="https://hcb.hackclub.com"
-          target="_blank"
-          rel="noopener"
+          {...({
+            as: "a",
+            href: "https://hcb.hackclub.com",
+            target: "_blank",
+            rel: "noopener"
+          } as any)}
           sx={{ 
             p: 4, 
             textAlign: 'center',
@@ -97,10 +101,12 @@ const ActivitiesPage: React.FC = () => (
 
         {/* workshops card :3 */}
         <Card 
-          as="a"
-          href="https://workshops.hackclub.com"
-          target="_blank"
-          rel="noopener"
+          {...({
+            as: "a",
+            href: "https://workshops.hackclub.com",
+            target: "_blank",
+            rel: "noopener"
+          } as any)}
           sx={{ 
             p: 4, 
             textAlign: 'center',
@@ -135,10 +141,12 @@ const ActivitiesPage: React.FC = () => (
 
         {/* slack card */}
         <Card 
-          as="a"
-          href="https://hackclub.com/slack"
-          target="_blank"
-          rel="noopener"
+          {...({
+            as: "a",
+            href: "https://hackclub.com/slack",
+            target: "_blank",
+            rel: "noopener"
+          } as any)}
           sx={{ 
             p: 4, 
             textAlign: 'center',
@@ -173,10 +181,12 @@ const ActivitiesPage: React.FC = () => (
 
         {/* sprig card :3 */}
         <Card 
-          as="a"
-          href="https://sprig.hackclub.com"
-          target="_blank"
-          rel="noopener"
+          {...({
+            as: "a",
+            href: "https://sprig.hackclub.com",
+            target: "_blank",
+            rel: "noopener"
+          } as any)}
           sx={{ 
             p: 4, 
             textAlign: 'center',
@@ -211,10 +221,12 @@ const ActivitiesPage: React.FC = () => (
 
         {/* blueprint card */}
         <Card 
-          as="a"
-          href="https://blueprint.hackclub.com"
-          target="_blank"
-          rel="noopener"
+          {...({
+            as: "a",
+            href: "https://blueprint.hackclub.com",
+            target: "_blank",
+            rel: "noopener"
+          } as any)}
           sx={{ 
             p: 4, 
             textAlign: 'center',
@@ -251,9 +263,11 @@ const ActivitiesPage: React.FC = () => (
       {/* back button */}
       <Box sx={{ mt: 5, textAlign: 'center' }}>
         <Button
-          as="a"
-          href="/"
-          variant="outline"
+          {...({
+            as: "a",
+            href: "/",
+            variant: "outline"
+          } as any)}
           sx={{
             fontSize: 2,
             fontWeight: 600,

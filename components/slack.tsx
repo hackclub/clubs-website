@@ -21,12 +21,11 @@ Highlight = Highlight.withComponent('mark')
 const Content: React.FC = () => (
   <Container
     sx={{
-      textAlign: 'center',
+      textAlign: [null, 'center'],
       zIndex: 999,
       py: 6,
       color: 'white',
       'h2,p': { textShadow: 'text' },
-      textAlign: [null, 'center'],
       position: 'relative',
       overflow: 'hidden'
     }}
@@ -47,9 +46,11 @@ const Content: React.FC = () => (
       <Highlight>fabulous people</Highlight> to talk to, active at all hours.
     </Text>
     <Button
-      as={Link}
-      href="/slack"
-      variant="ctaLg"
+      {...({
+        as: Link,
+        href: "/slack",
+        variant: "ctaLg"
+      } as any)}
       sx={{
         background: 'linear-gradient(-132deg, #338eda 14%, #33d6a6 82%)'
       }}
@@ -107,13 +108,15 @@ const Slack: React.FC = () => {
         sx={{ overflow: 'hidden', position: 'relative' }}
       >
         <Box
-          as="video"
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster="https://cloud-r4rrjh2z8-hack-club-bot.vercel.app/02020-07-25_a1tcva4ch6mmr6j2cfmcb4e9ync3yhar.png"
-          duration={2000}
+          {...({
+            as: "video",
+            autoPlay: true,
+            muted: true,
+            loop: true,
+            playsInline: true,
+            poster: "https://cloud-r4rrjh2z8-hack-club-bot.vercel.app/02020-07-25_a1tcva4ch6mmr6j2cfmcb4e9ync3yhar.png",
+            duration: 2000
+          } as any)}
           sx={{
             position: 'absolute',
             bottom: 0,

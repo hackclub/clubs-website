@@ -132,7 +132,13 @@ const ClubEssentialsPage: React.FC = () => (
         </Grid>
         
         <Box sx={{ mt: 4 }}>
-          <Button as="a" href="/" variant="outline">
+          <Button
+            {...({
+              as: "a",
+              href: "/",
+              variant: "outline"
+            } as any)}
+          >
             ← Back to Home
           </Button>
         </Box>

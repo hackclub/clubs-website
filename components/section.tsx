@@ -89,7 +89,13 @@ const Section: React.FC<SectionProps> = ({
       
       {showNavButton && (
         <Box sx={{ mt: 4, textAlign: textAlign === 'center' ? 'center' : 'left' }}>
-          <Button as="a" href={navButtonHref} variant="outline">
+          <Button
+            {...({
+              as: "a",
+              href: navButtonHref,
+              variant: "outline"
+            } as any)}
+          >
             {navButtonText} →
           </Button>
         </Box>

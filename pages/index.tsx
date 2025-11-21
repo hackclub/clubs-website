@@ -962,7 +962,7 @@ const Page: React.FC = () => (
             }}>
               1
             </Box>
-            <Heading as="h3" sx={{ fontSize: 4, mb: 2, color: 'text', position: 'relative', zIndex: 1 }}>Bronze Level</Heading>
+            <Heading as="h3" sx={{ fontSize: 4, mb: 2, color: 'text', position: 'relative', zIndex: 1 }}>Level One</Heading>
             <Text sx={{ color: 'muted', position: 'relative', zIndex: 1 }}>Foundation level for all new clubs</Text>
           </Box>
 
@@ -1022,7 +1022,7 @@ const Page: React.FC = () => (
             }}>
               2
             </Box>
-            <Heading as="h3" sx={{ fontSize: 4, mb: 2, color: 'text', position: 'relative', zIndex: 1 }}>Silver Level</Heading>
+            <Heading as="h3" sx={{ fontSize: 4, mb: 2, color: 'text', position: 'relative', zIndex: 1 }}>Level Two</Heading>
             <Text sx={{ color: 'muted', position: 'relative', zIndex: 1 }}>Advanced level for active and engaged clubs</Text>
           </Box>
         </Box>
@@ -1030,7 +1030,7 @@ const Page: React.FC = () => (
         <Button
           {...({
             as: "a",
-            href: "/stories"
+            href: "/levels"
           } as any)}
           sx={{
             bg: 'background',
@@ -1053,7 +1053,7 @@ const Page: React.FC = () => (
             }
           }}
         >
-          Learn More About Stories →
+          Learn More About Levels →
         </Button>
       </Container>
     </Box>
@@ -1382,6 +1382,32 @@ const Page: React.FC = () => (
             svg: { color: 'white' }
           }}
         />
+        <Box sx={{ textAlign: 'center', mt: [4, 5] }}>
+          <Button
+            {...({
+              as: "a",
+              href: "/resources"
+            } as any)}
+            sx={{
+              bg: 'primary',
+              color: 'white',
+              px: 4,
+              py: 3,
+              fontSize: 2,
+              fontWeight: 700,
+              borderRadius: '12px',
+              cursor: 'pointer',
+              border: 'none',
+              transition: 'all 0.3s ease',
+              '&:hover': {
+                transform: 'translateY(-2px)',
+                boxShadow: '0 8px 20px rgba(0, 0, 0, 0.2)'
+              }
+            }}
+          >
+            View All Resources →
+          </Button>
+        </Box>
       </Container>
     </Box>
 

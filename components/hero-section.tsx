@@ -99,7 +99,14 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       {children}
       
       {ctaText && ctaHref && (
-        <Button as="a" href={ctaHref} variant={ctaVariant} sx={{ mt: 3 }}>
+        <Button
+          {...({
+            as: "a",
+            href: ctaHref,
+            variant: ctaVariant
+          } as any)}
+          sx={{ mt: 3 }}
+        >
           {ctaText}
         </Button>
       )}

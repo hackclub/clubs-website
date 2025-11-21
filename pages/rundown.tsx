@@ -230,10 +230,12 @@ const RundownPage: React.FC = () => (
 
           <Box sx={{ mt: 4, textAlign: 'center' }}>
             <Button
-              as="a"
-              href="https://apply.hackclub.com"
-              target="_blank"
-              rel="noopener"
+              {...({
+                as: "a",
+                href: "https://apply.hackclub.com",
+                target: "_blank",
+                rel: "noopener"
+              } as any)}
               sx={{
                 bg: 'primary',
                 color: 'white',
@@ -259,7 +261,13 @@ const RundownPage: React.FC = () => (
         </Box>
 
         <Box sx={{ mt: 4 }}>
-          <Button as="a" href="/" variant="outline">
+          <Button
+            {...({
+              as: "a",
+              href: "/",
+              variant: "outline"
+            } as any)}
+          >
             ← Back to Home
           </Button>
         </Box>

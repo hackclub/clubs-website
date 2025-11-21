@@ -39,11 +39,13 @@ const CTACards: React.FC<CTACardsProps> = ({ cards = [], columns = [1, null, 3],
     {cards.map((card, index) => (
       <SimpleCard
         key={index}
-        as={card.href ? "a" : "div"}
-        href={card.href}
-        target={card.href ? "_blank" : undefined}
-        rel={card.href ? "noopener" : undefined}
-        variant="interactive"
+        {...({
+          as: card.href ? "a" : "div",
+          href: card.href,
+          target: card.href ? "_blank" : undefined,
+          rel: card.href ? "noopener" : undefined,
+          variant: "interactive"
+        } as any)}
         sx={{
           background: card.gradient || `linear-gradient(135deg, ${card.color} 0%, ${card.colorEnd || card.color} 100%)`,
           color: 'white',

@@ -137,7 +137,7 @@ export const createPageWithSections = (pageName: string, sections: Array<{
   columns?: number;
   dataSource?: string;
   cardVariant?: string;
-}): string => {
+}>): string => {
   const imports = [
     "import React from 'react'",
     "import PageLayout from '../components/page-layout'",
