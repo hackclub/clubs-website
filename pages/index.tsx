@@ -239,14 +239,58 @@ const Feature: React.FC<FeatureProps> = ({ icon, color, name, desc, children, sx
   </Box>
 )
 
-const Page: React.FC = () => (
-  <>
-    <Meta
-      as={Head}
-      title="Coding / Computer Science Clubs"
-      description="Hack Club is a global nonprofit network of high school makers & student-led computer science clubs where young people build the agency, the network, & the technical talent to think big & do big things in the world."
-      image="/assemble.jpg"
-    />
+interface PageProps {
+  totalClubs: number
+}
+
+const Page: React.FC<PageProps> = ({ totalClubs }) => {
+  const [displayCount, setDisplayCount] = React.useState(0)
+  const [hasAnimated, setHasAnimated] = React.useState(false)
+  const counterRef = React.useRef<HTMLDivElement>(null)
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasAnimated) {
+          setHasAnimated(true)
+          
+          let start = 0
+          const duration = 1000 // 1 second
+          const increment = totalClubs / (duration / 16) // 60fps
+          
+          const timer = setInterval(() => {
+            start += increment
+            if (start >= totalClubs) {
+              setDisplayCount(totalClubs)
+              clearInterval(timer)
+            } else {
+              setDisplayCount(Math.floor(start))
+            }
+          }, 16)
+        }
+      },
+      { threshold: 0.5 }
+    )
+
+    if (counterRef.current) {
+      observer.observe(counterRef.current)
+    }
+
+    return () => {
+      if (counterRef.current) {
+        observer.unobserve(counterRef.current)
+      }
+    }
+  }, [totalClubs, hasAnimated])
+
+  return (
+    <>
+      <Meta
+        as={Head}
+        title="Coding / Computer Science Clubs"
+        description="Hack Club is a global nonprofit network of high school makers & student-led computer science clubs where young people build the agency, the network, & the technical talent to think big & do big things in the world."
+        image="/assemble.jpg"
+      />
     <Head>
       <meta
         property="og:logo"
@@ -546,6 +590,38 @@ const Page: React.FC = () => (
           Hackers at Assemble in SF
         </Badge>
       </Box>
+    </Box>
+
+    <Box as="section" ref={counterRef} sx={{ py: [4, 5], bg: 'elevated', borderBottom: '1px solid', borderColor: 'muted' }}>
+      <Container sx={{ textAlign: 'center' }}>
+        <Text
+          as="p"
+          sx={{
+            fontSize: [2, 3],
+            fontWeight: 600,
+            color: 'muted',
+            mb: 2,
+            textTransform: 'uppercase',
+            letterSpacing: '0.1em'
+          }}
+        >
+          Active Clubs Worldwide
+        </Text>
+        <Heading
+          as="div"
+          sx={{
+            fontSize: [6, 7, 8],
+            fontWeight: 900,
+            background: 'linear-gradient(135deg, #ec3750 0%, #ff6b6b 100%)',
+            backgroundClip: 'text',
+            WebkitBackgroundClip: 'text',
+            color: 'transparent',
+            letterSpacing: '-0.02em'
+          }}
+        >
+          {displayCount > 0 ? displayCount.toLocaleString() : '...'}
+        </Heading>
+      </Container>
     </Box>
 
     <Box as="section" sx={{ py: [4, 5, 6], bg: 'sunken', position: 'relative' }}>
@@ -2315,7 +2391,40 @@ const Page: React.FC = () => (
 
     <Footer />
   </>
-)
+  )
+}
+
+export async function getServerSideProps() {
+  try {
+    const https = require('https')
+    const data = await new Promise((resolve, reject) => {
+      https.get('https://clubapi.hackclub.com/clubs', (res: any) => {
+        let body = ''
+        res.on('data', (chunk: any) => body += chunk)
+        res.on('end', () => {
+          try {
+            resolve(JSON.parse(body))
+          } catch (e) {
+            reject(e)
+          }
+        })
+      }).on('error', reject)
+    })
+    
+    return {
+      props: {
+        totalClubs: (data as any).totalClubs || 0
+      }
+    }
+  } catch (error) {
+    console.error('Failed to fetch clubs:', error)
+    return {
+      props: {
+        totalClubs: 0
+      }
+    }
+  }
+}
 
 export default Page
 
