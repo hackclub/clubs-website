@@ -1325,7 +1325,7 @@ const Page: React.FC<PageProps> = ({ totalClubs }) => {
               name="Stickers"
               desc={
                 <>
-                  Get <Link href="/stickers">amazing stickers</Link> for marketing
+                  Get <Link href="https://forms.hackclub.com/stickers">amazing stickers</Link> for marketing
                   your club shipped directly to you & your club members.
                 </>
               }
@@ -1339,7 +1339,7 @@ const Page: React.FC<PageProps> = ({ totalClubs }) => {
               desc={
                 <>
                   Use our 501(c)(3) status and a restricted fund with{' '}
-                  <Link href="/fiscal-sponsorship">HCB</Link> to fundraise, accept donations, and
+                  <Link href="https://hackclub.com/fiscal-sponsorship/">HCB</Link> to fundraise, accept donations, and
                   buy things!
                 </>
               }
@@ -1348,8 +1348,8 @@ const Page: React.FC<PageProps> = ({ totalClubs }) => {
               name="Weekly events"
               desc={
                 <>
-                  From <Link href="/night">Hack Night</Link> to{' '}
-                  <Link href="/amas">AMAs</Link>
+                  From <Link href="https://hackclub.com/night/">Hack Night</Link> to{' '}
+                  <Link href="https://hackclub.com/amas/">AMAs</Link>
                   {' to '}
                   <a href="https://twitter.com/hackclub/status/1300494921997193217?s=21">
                     weirder events
